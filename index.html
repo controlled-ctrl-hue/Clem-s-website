@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clement Yu — Mechatronics Engineering</title>
+  <meta name="description" content="Clement Yu — Mechatronics Engineering student at the University of Waterloo. Hardware, firmware, and mechanical design." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- paper grain overlay -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <main class="page">
+
+    <!-- ===== Header / intro ===== -->
+    <header class="masthead">
+      <div class="masthead__text">
+        <p class="kicker">a working notebook of</p>
+        <h1 class="name">Clement&nbsp;Yu</h1>
+        <p class="tagline">
+          Mechatronics engineering at Waterloo. I design the mechanical,
+          electrical, and firmware guts of things that have to survive the
+          real world — rockets, satellites, and the occasional runaway robot.
+        </p>
+
+        <ul class="contacts">
+          <li><a href="mailto:clementyu@uwaterloo.ca">clementyu@uwaterloo.ca</a></li>
+          <li><a href="tel:+12368632324">236&nbsp;863&nbsp;2324</a></li>
+          <li><a href="https://linkedin.com/in/yuclement" target="_blank" rel="noopener">linkedin/yuclement</a></li>
+        </ul>
+      </div>
+
+      <!-- headshot placeholder: drop a square photo named "headshot.jpg" next to this file -->
+      <figure class="polaroid" aria-label="Headshot placeholder">
+        <div class="polaroid__photo">
+          <!-- when you have a photo, replace the span below with:
+               <img src="headshot.jpg" alt="Clement Yu" /> -->
+          <span class="polaroid__hint">your photo<br/>goes here</span>
+        </div>
+        <figcaption>Clement, allegedly</figcaption>
+      </figure>
+    </header>
+
+    <!-- ===== Projects ===== -->
+    <section class="section" id="projects">
+      <h2 class="section__title"><span>Things I've built</span></h2>
+
+      <div class="cards">
+
+        <article class="card" style="--tilt:-1.4deg">
+          <span class="tape tape--tl" aria-hidden="true"></span>
+          <header class="card__head">
+            <h3>DeltaV CanSat — Mechanical Lead</h3>
+            <span class="card__when">Dec 2023 – Apr 2026</span>
+          </header>
+          <p class="card__role">OnShape · 3D printing · electronics</p>
+          <ul class="card__points">
+            <li>Chose the sensor suite (BMP280 + MLX9060 IR thermal array) to hit a dual atmospheric and heat-mapping mission.</li>
+            <li>Led the structure: 3D-printed can, servo-actuated gliding wing deployment, and the parachute recovery system.</li>
+            <li>Verified the design against competition limits — descent rate, battery endurance, mass and dimensions — by calculation and test.</li>
+            <li>Ran range, drop, and component tests to prove the structure against launch loads.</li>
+          </ul>
+        </article>
+
+        <article class="card" style="--tilt:1.1deg">
+          <span class="tape tape--tr" aria-hidden="true"></span>
+          <header class="card__head">
+            <h3>Avionics GNSS &amp; Sensor Board — Waterloo Rocketry</h3>
+            <span class="card__when">Sep 2026 – present</span>
+          </header>
+          <p class="card__role">KiCAD · STM32 · C++ · soldering</p>
+          <ul class="card__points">
+            <li>Designed and routed a 4-layer PCB for a rocket's GNSS/sensor node: STM32H503, NovAtel OEM719 receiver, magnetometer, barometer, and CAN FD to the vehicle bus.</li>
+            <li>Specified the 12 V → 3.3 V buck stage, current monitoring, and analog supply filtering for 0.75 A steady and 1.7 A inrush.</li>
+            <li>Wrote the STM32 firmware in PlatformIO — reading I²C sensors and the PPS pulse, publishing over CAN — iterating hardware and software through GitHub PR reviews.</li>
+          </ul>
+        </article>
+
+        <article class="card" style="--tilt:-0.7deg">
+          <span class="tape tape--tl" aria-hidden="true"></span>
+          <header class="card__head">
+            <h3>UBC Physics Olympics — Team Captain</h3>
+            <span class="card__when">Sep 2023 – Feb 2026</span>
+          </header>
+          <p class="card__role">OnShape · 3D printing · C++</p>
+          <ul class="card__points">
+            <li>Built an autonomous pole-climbing robot: 3D-printed frame, accelerometer and ultrasonic sensor on Arduino to find the pole-top and ease acceleration on the way up and down.</li>
+            <li>Designed a catamaran hull for a solar-powered boat, tuning shape and drag to balance weight against propulsion.</li>
+            <li>Mentored 20+ peers through labs, speed physics, and Fermi questions.</li>
+            <li>Placed 4th of 88 in BC — and somehow ended up on CTV news.</li>
+          </ul>
+        </article>
+
+        <article class="card" style="--tilt:1.5deg">
+          <span class="tape tape--tr" aria-hidden="true"></span>
+          <header class="card__head">
+            <h3>Bluetooth RC Car</h3>
+            <span class="card__when">Apr 2026 – Jun 2026</span>
+          </header>
+          <p class="card__role">Arduino · C++ · HC-05 · IR sensors · 3D printing</p>
+          <ul class="card__points">
+            <li>Designed and built a remote-control car on an Arduino with a motor-driver shield and an HC-05 Bluetooth module talking to a phone.</li>
+            <li>Wrote C++ to send commands over Bluetooth and turn them into real-time control signals.</li>
+            <li>Debugged wireless latency and motor response until the controls actually felt responsive.</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===== Experience ===== -->
+    <section class="section" id="experience">
+      <h2 class="section__title"><span>Off the bench</span></h2>
+
+      <article class="entry">
+        <div class="entry__head">
+          <h3>Summer Camp Counselor</h3>
+          <span class="entry__when">Jun 2026 – Aug 2026</span>
+        </div>
+        <p class="entry__where">Keats Camps · Keats Island, B.C.</p>
+        <ul class="card__points">
+          <li>Supervised and kept 12 campers aged 7–14 safe, every day.</li>
+          <li>Escalated and worked with supervisors to resolve tricky camper situations in a timely way.</li>
+          <li>Planned and ran the daily program with a team of 16 other counselors.</li>
+          <li>Mentored junior counselors through shadowing and post-situation feedback to build their independence.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- ===== Education + Skills ===== -->
+    <section class="section grid-two" id="details">
+      <div>
+        <h2 class="section__title"><span>School</span></h2>
+        <article class="entry">
+          <div class="entry__head">
+            <h3>University of Waterloo</h3>
+            <span class="entry__when">Sep 2026 – May 2031</span>
+          </div>
+          <p class="entry__where">BASc, Mechatronics Engineering · Waterloo, ON</p>
+        </article>
+      </div>
+
+      <div>
+        <h2 class="section__title"><span>In the toolbox</span></h2>
+        <div class="skills">
+          <div class="skills__group">
+            <h4>Software</h4>
+            <p>OnShape, SolidWorks, AutoCAD, Adobe, KiCAD, Excel, Word</p>
+          </div>
+          <div class="skills__group">
+            <h4>Languages</h4>
+            <p>C++, C, Python</p>
+          </div>
+          <div class="skills__group">
+            <h4>Hands-on</h4>
+            <p>3D printing, soldering iron, drill press, milling machine</p>
+          </div>
+          <div class="skills__group">
+            <h4>Speaks</h4>
+            <p>English (native), Cantonese (native)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Clement Yu · Waterloo, ON · built by hand, not by template</p>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

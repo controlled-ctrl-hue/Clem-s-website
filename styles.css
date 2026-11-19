@@ -1,0 +1,320 @@
+/* =========================================================
+   Clement Yu — personal site
+   Palette: aged paper, ink blue, warm red accent
+   ========================================================= */
+
+:root {
+  --paper:      #f3ecdd;  /* aged paper */
+  --paper-deep: #e7ddc8;  /* shadow on paper */
+  --ink:        #22324a;  /* ink blue — primary text */
+  --ink-soft:   #4a5a70;  /* softened ink */
+  --accent:     #b4452f;  /* warm brick red */
+  --accent-2:   #c9893f;  /* ochre, for small bits */
+  --line:       #cdbfa2;  /* hairline rules */
+  --tape:       rgba(201, 185, 142, 0.45);
+
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --mono:  "Spline Sans Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --maxw: 860px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.6;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* subtle paper grain, drawn with layered gradients (no image needed) */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(0,0,0,0.025) 0 1px, transparent 1px),
+    radial-gradient(circle at 70% 60%, rgba(0,0,0,0.02) 0 1px, transparent 1px),
+    radial-gradient(circle at 40% 80%, rgba(0,0,0,0.02) 0 1px, transparent 1px);
+  background-size: 7px 7px, 11px 11px, 13px 13px;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 5vw, 2.5rem) 4rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(180, 69, 47, 0.35);
+  transition: border-color 0.18s ease, color 0.18s ease;
+}
+a:hover { color: var(--ink); border-color: var(--ink); }
+
+/* ===================== Masthead ===================== */
+.masthead {
+  display: flex;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 2.5rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--line);
+}
+.masthead__text { flex: 1 1 340px; }
+
+.kicker {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 0.4rem;
+}
+
+.name {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(2.8rem, 9vw, 4.6rem);
+  line-height: 0.95;
+  margin: 0 0 1rem;
+  letter-spacing: -0.015em;
+}
+
+.tagline {
+  max-width: 44ch;
+  margin: 0 0 1.4rem;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+.contacts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.4rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+}
+.contacts a { border-bottom-style: dotted; }
+
+/* ---- Polaroid / headshot placeholder ---- */
+.polaroid {
+  flex: 0 0 auto;
+  margin: 0;
+  background: #fbf7ee;
+  padding: 0.7rem 0.7rem 1.1rem;
+  box-shadow: 0 6px 18px rgba(34, 50, 74, 0.16);
+  transform: rotate(2.5deg);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+.polaroid__photo {
+  width: 170px;
+  height: 170px;
+  background:
+    repeating-linear-gradient(45deg, var(--paper-deep) 0 10px, #ded2b8 10px 20px);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.polaroid__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.polaroid__hint {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-align: center;
+  line-height: 1.5;
+}
+.polaroid figcaption {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  text-align: center;
+  margin-top: 0.6rem;
+}
+
+/* ===================== Sections ===================== */
+.section { margin: 3.2rem 0; }
+
+.section__title {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0 0 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+.section__title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+.section__title span { color: var(--accent); }
+
+/* ===================== Project cards ===================== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.4rem;
+}
+
+.card {
+  position: relative;
+  background: #fbf7ee;
+  border: 1px solid rgba(0,0,0,0.06);
+  padding: 1.5rem 1.4rem 1.3rem;
+  box-shadow: 0 4px 14px rgba(34, 50, 74, 0.08);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: rotate(0deg) translateY(-3px);
+  box-shadow: 0 10px 24px rgba(34, 50, 74, 0.16);
+  z-index: 2;
+}
+
+/* bits of masking tape */
+.tape {
+  position: absolute;
+  width: 74px;
+  height: 26px;
+  background: var(--tape);
+  border-left: 1px dashed rgba(0,0,0,0.08);
+  border-right: 1px dashed rgba(0,0,0,0.08);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.tape--tl { top: -11px; left: 18px; transform: rotate(-6deg); }
+.tape--tr { top: -11px; right: 18px; transform: rotate(5deg); }
+
+.card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.card__head h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.18rem;
+  line-height: 1.2;
+  margin: 0;
+}
+.card__when {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.card__role {
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  color: var(--accent-2);
+  margin: 0.35rem 0 0.8rem;
+}
+.card__points {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.93rem;
+  color: var(--ink-soft);
+}
+.card__points li { margin-bottom: 0.5rem; }
+.card__points li::marker { color: var(--accent); }
+
+/* ===================== Simple entries ===================== */
+.entry { margin-bottom: 1.5rem; }
+.entry__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.entry__head h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.25rem;
+  margin: 0;
+}
+.entry__when {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+}
+.entry__where {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--accent-2);
+  margin: 0.2rem 0 0.7rem;
+}
+
+/* ===================== Two-column (edu + skills) ===================== */
+.grid-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.5rem, 5vw, 3rem);
+}
+
+.skills__group { margin-bottom: 1rem; }
+.skills__group h4 {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.2rem;
+}
+.skills__group p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+/* ===================== Footer ===================== */
+.footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* ===================== Responsive ===================== */
+@media (max-width: 680px) {
+  .cards { grid-template-columns: 1fr; }
+  .grid-two { grid-template-columns: 1fr; }
+  .masthead { flex-direction: column-reverse; align-items: flex-start; }
+  .card, .polaroid { transform: none; }
+  .card:hover { transform: translateY(-3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; scroll-behavior: auto !important; }
+}
